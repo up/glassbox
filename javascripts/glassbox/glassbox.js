@@ -57,7 +57,7 @@ if ( typeof(GlassBox) == 'undefined' ) {
   */ 
   var GlassBox = function() {
  
-    THIS = this,
+    THIS = this;
     /** 
     * @memberOf GlassBox
     * @desc GlassBox Version
@@ -65,8 +65,8 @@ if ( typeof(GlassBox) == 'undefined' ) {
     * @example
     * alert( myBox.version );
     */
-    this.version = "2.1.0",
-    this.version_comment = "Fixed: IE auto height bug",
+    this.version = "2.1.0";
+    this.version_comment = "Fixed: IE auto height bug";
     /** 
     * @memberOf GlassBox
     * @desc Date of last modification
@@ -74,25 +74,25 @@ if ( typeof(GlassBox) == 'undefined' ) {
     * @example
     * alert( myBox.last_mod );
     */
-    this.last_mod = "2010/04/06",
+    this.last_mod = "2010/04/06";
   
-    this.bb_hor = "",
-    this.bb_ver = "",
-    this.skin_path =  path_to_root_dir + path_to_glassbox + "skins/",
-    this.skin_default = "default",
+    this.bb_hor = "";
+    this.bb_ver = "";
+    this.skin_path =  path_to_root_dir + path_to_glassbox + "skins/";
+    this.skin_default = "default";
     
-    this.gb_path = path_to_root_dir + path_to_glassbox,
+    this.gb_path = path_to_root_dir + path_to_glassbox;
 	this.img_bg_path = mypath_to_background_images != "" 
-		? mypath_to_background_images : path_to_root_dir + path_to_background_images,
+		? mypath_to_background_images : path_to_root_dir + path_to_background_images;
     
-    this.multicontent_arr = new Array(),
-    this.exists = false,
-    this.is_false = true,
-    this.dblclick = true,
+    this.multicontent_arr = new Array();
+    this.exists = false;
+    this.is_false = true;
+    this.dblclick = true;
 	this.isvscreen = false;  
 	   
-    this.is_IE = /MSIE (5\.5|6|7|8)/.test( navigator.userAgent ),
-    this.is_Opera = /Opera/.test( navigator.userAgent ),
+    this.is_IE = /MSIE (5\.5|6|7|8)/.test( navigator.userAgent );
+    this.is_Opera = /Opera/.test( navigator.userAgent );
                 
     /** 
     * @memberOf GlassBox
@@ -182,16 +182,16 @@ if ( typeof(GlassBox) == 'undefined' ) {
           this.glassbox.innerHTML = "";
         }
 
-        this.glassboxWidth = parseInt( this.width );
-        this.boxborder_lr1 = parseInt( this.bb_hor );
+        this.glassboxWidth = parseInt( this.width, 10 );
+        this.boxborder_lr1 = parseInt( this.bb_hor, 10 );
 	    if(isNaN(this.glassboxWidth)) {
 			this.content_width = "auto";
 			this.glassboxWidth = "auto";
 		}
         else this.content_width = this.glassboxWidth - ( 2 * this.boxborder_lr1 ) + "px" ;
 
-        this.glassboxHeight = parseInt( this.height );
-        this.boxborder_tb1 = parseInt( this.bb_ver );
+        this.glassboxHeight = parseInt( this.height, 10 );
+        this.boxborder_tb1 = parseInt( this.bb_ver, 10 );
 	    if(isNaN(this.glassboxHeight)) {
 			this.content_height = "auto";
 			this.glassboxHeight = "auto";
@@ -202,7 +202,7 @@ if ( typeof(GlassBox) == 'undefined' ) {
         this.screenWidth = sd.screenWidth;
         this.screenHeight = sd.screenHeight;
       }
-    },
+    };
     
     /** 
     * @memberOf GlassBox
@@ -214,14 +214,14 @@ if ( typeof(GlassBox) == 'undefined' ) {
     */
     this.vscreen = function( left, margin ){
       this.isvscreen = true;      
-      this.glassboxHeight = this.screenHeight - ( parseInt( margin ) * 2 );
-      this.boxborder_tb1 = parseInt( this.bb_ver );
+      this.glassboxHeight = this.screenHeight - ( parseInt( margin, 10 ) * 2 );
+      this.boxborder_tb1 = parseInt( this.bb_ver, 10 );
       this.content_height = this.glassboxHeight - ( 2 * this.boxborder_tb1 ) + "px" ;
       this.glassbox.style.position = "absolute";
       this.glassbox.style.left = left;
-      this.glassbox.style.top = parseInt( margin ) + "px";    
+      this.glassbox.style.top = parseInt( margin, 10 ) + "px";    
       this.createGlassbox();
-    },
+    };
     
     /** 
     * @memberOf GlassBox
@@ -231,7 +231,7 @@ if ( typeof(GlassBox) == 'undefined' ) {
     */
     this.ipos = function(){
       this.createGlassbox();
-    },
+    };
     
     /** 
     * @memberOf GlassBox
@@ -246,7 +246,7 @@ if ( typeof(GlassBox) == 'undefined' ) {
       this.glassbox.style.left = left;
       this.glassbox.style.top = top;
       this.createGlassbox();
-    },
+    };
     
     /** 
     * @memberOf GlassBox
@@ -325,7 +325,7 @@ if ( typeof(GlassBox) == 'undefined' ) {
         $( this.id + "_overlay" ).style.display = "block";
       }
       this.appear();
-    },
+    };
     
 	/** 
 	* @private 
@@ -346,7 +346,7 @@ if ( typeof(GlassBox) == 'undefined' ) {
 	    }
 	    if(scrollY == undefined) scrollY = 0;
 	    return scrollY;
-	},
+	};
 	
     /** 
     * @memberOf GlassBox
@@ -371,7 +371,7 @@ if ( typeof(GlassBox) == 'undefined' ) {
       if( ms ) {
         setTimeout( "THIS.fade()", ms );
       }
-    },
+    };
   
     /** 
     * @memberOf GlassBox
@@ -384,7 +384,7 @@ if ( typeof(GlassBox) == 'undefined' ) {
       if(typeof Effect != 'undefined') {
         new Effect.Fade( THIS.id , {
           afterFinish: function() { 
-            THIS.remove() 
+            THIS.remove();
           }
         });
         if($( THIS.id + "_overlay" )) {
@@ -403,7 +403,7 @@ if ( typeof(GlassBox) == 'undefined' ) {
         }
         this.remove();
       }
-    },
+    };
 
     /** 
     * @private 
@@ -411,7 +411,7 @@ if ( typeof(GlassBox) == 'undefined' ) {
     this.remove = function(){
       //this.glassbox.parentNode.removeChild(this.glassbox);
       $( this.id ).innerHTML = $( this.id + "_content" ).innerHTML;
-    },
+    };
 
     /** 
     * @memberOf GlassBox
@@ -425,7 +425,7 @@ if ( typeof(GlassBox) == 'undefined' ) {
         this.glassbox.title = title;
       }
       catch(e) {}
-    },
+    };
 
     /** 
     * @memberOf GlassBox
@@ -436,23 +436,24 @@ if ( typeof(GlassBox) == 'undefined' ) {
     */
     this.zindex = function( zindex ){
       this.glassbox.style.zIndex = zindex;
-    },
+    };
     
     /** 
     * @private 
     */
     this.noro = function( rightmargin ){ //no right overflow
       if( rightmargin == null ) rightmargin = 0;
-      var leftMarginScreen = this.screenWidth - ( parseInt( this.glassbox.style.left) + parseInt( this.glassboxWidth ) );
+      var leftMarginScreen = this.screenWidth - ( parseInt( this.glassbox.style.left, 10 ) + parseInt( this.glassboxWidth, 10 ) );
       if( leftMarginScreen < 0 ) {
-        this.glassbox.style.left = ( parseInt( this.glassbox.style.left ) + leftMarginScreen + rightmargin + 14 ) + "px";
+        this.glassbox.style.left = ( parseInt( this.glassbox.style.left, 10 ) + leftMarginScreen + rightmargin + 14 ) + "px";
       }
-    },
+    };
     
     /** 
     * @private 
     */
     this.createGlassbox = function(){
+      var clear = null;
 
       var toprow = document.createElement( "div" );
       toprow.setAttribute( "id", this.id + "_toprow" );
@@ -499,7 +500,7 @@ if ( typeof(GlassBox) == 'undefined' ) {
       }
       toprow.appendChild( topright );
       
-      var clear = document.createElement( "div" );
+      clear = document.createElement( "div" );
       clear.style.clear = "both";
       this.glassbox.appendChild( clear );
     
@@ -562,7 +563,7 @@ if ( typeof(GlassBox) == 'undefined' ) {
       }
       middlerow.appendChild( right );
     
-      var clear = document.createElement( "div" );
+      clear = document.createElement( "div" );
       clear.style.clear = "both";
       this.glassbox.appendChild( clear );
     
@@ -610,13 +611,13 @@ if ( typeof(GlassBox) == 'undefined' ) {
       }
       bottomrow.appendChild( bottomright );
     
-      var clear = document.createElement( "div" );
+      clear = document.createElement( "div" );
       clear.style.clear = "both";
       this.glassbox.appendChild( clear );      
 
       if(this.isvscreen == false ) this.adjustBoxBorder();
       
-    },
+    };
     
     /** 
     * @public 
@@ -630,8 +631,8 @@ if ( typeof(GlassBox) == 'undefined' ) {
       var content = $(this.id + "_content");
       var contentWidth = parseFloat(getElementProperty(content, 'width'));
       var contentHeight = parseFloat(getElementProperty(content, 'height'));
-      var skinWidth = parseInt(this.bb_ver);
-      var skinHeight = parseInt(this.bb_hor);
+      var skinWidth = parseInt(this.bb_ver, 10 );
+      var skinHeight = parseInt(this.bb_hor, 10 );
       var paddingTop = parseFloat(getElementProperty(content, 'padding-top'));
       var paddingRight = parseFloat(getElementProperty(content, 'padding-right'));
       var paddingBottom = parseFloat(getElementProperty(content, 'padding-bottom'));
@@ -676,14 +677,14 @@ if ( typeof(GlassBox) == 'undefined' ) {
               contentHeight + paddingTop + paddingLeft + "px";
         }
       }
-    },
+    };
 
     /** 
     * @private 
     */
     this.iepngfix = function( bgimg ) {
       return 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="' + bgimg + '", sizingMethod="scale")';
-    },
+    };
     
     /** 
     * @private 
@@ -694,7 +695,7 @@ if ( typeof(GlassBox) == 'undefined' ) {
         htmlbody.style.background ="url( " + this.img_bg_path + "bg" + num +".jpg )";
       }
       catch(e) {}
-    },
+    };
   
     /** 
     * @private 
@@ -709,8 +710,8 @@ if ( typeof(GlassBox) == 'undefined' ) {
           THIS.overlay.style.height = sd.screenHeight + "px";
         }
       }
-    }
-  }
+    };
+  };
 }
 
 /** 
@@ -726,7 +727,7 @@ function GETrequest( url, target_id, callback_id ) {
       if(target_id && $( target_id )) $( target_id ).innerHTML = req.responseText;
       if(callback_id) GETrequest_callbackHandler(callback_id);
     }  
-  }
+  };
   req.open( 'GET', url );
   req.send( null ); 
 }
@@ -750,7 +751,7 @@ function getScreenDimensions (){
   return {
     "screenWidth": screenWidth, 
     "screenHeight": screenHeight 
-  }
+  };
 }
 
 
@@ -792,8 +793,8 @@ var IE_computedStyle = function () {
 
 	var getWidth = function () {
         var width = styleEl.offsetWidth; /* Currently the width including padding + border */
-        width -= parseInt(getPadding("Right"));
-        width -= parseInt(getPadding("Left"));
+        width -= parseInt(getPadding("Right"),10);
+        width -= parseInt(getPadding("Left"),10);
        return width + "px";
     };
     
@@ -817,8 +818,8 @@ var IE_computedStyle = function () {
         get : function (el, styleProp) {   
             var rValue;
             styleEl = (typeof(el) === "string") ? $(el) : el;	
-            var styleProp = (typeof(styleProp) === "string") ? styleProp.toLowerCase() : "";
-            styleProp = styleProp.replace(/\-/g, "");
+            var styleProp2 = (typeof(styleProp) === "string") ? styleProp.toLowerCase() : "";
+            styleProp = styleProp2.replace(/\-/g, "");
             
             switch (styleProp) { /* Run through the valid css properties, return undefined if none match */
                 case "width": rValue = getWidth(); break;
@@ -837,7 +838,7 @@ var IE_computedStyle = function () {
 var removeElement = function(id) {
 	var Node = document.getElementById(id);
 	Node.parentNode.removeChild(Node);
-}
+};
 
 /** 
 * @private 
@@ -849,14 +850,14 @@ var getDocHeight = function() {
         db.scrollHeight, db.offsetHeight, db.clientHeight, 
         ddE.scrollHeight, ddE.offsetHeight, ddE.clientHeight
     );
-}
+};
 /** 
 * @public 
 */
 if ( typeof($) == 'undefined' ) {
   $ = function (id) {
     return document.getElementById(id);
-  }
+  };
 }
 
 
