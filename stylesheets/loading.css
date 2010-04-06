@@ -1,0 +1,35 @@
+#progressBar {
+	display: block;
+}
+#progressIndicator {
+	position:absolute;
+	top:21px;
+	left:25px;
+	background-color:#FCB40A;
+	height:18px;
+}
+
+#progressText {
+	position:absolute;
+	top:24px;
+	left:8px;
+	border-style:none;
+	width:200px;
+	height:18px;
+	text-align:center;
+	color:#000;
+	font-family:verdana;
+	font-size:9px;
+}
+
+#mContainer {
+	position:relative;
+	height:420px;
+}
+
+.mImg {
+	visibility:hidden;
+	border-style:solid;
+	border-width:1px;
+}
+

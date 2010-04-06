@@ -1,0 +1,646 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>GlassBox</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script src="javascripts/prototype.js" type="text/javascript"></script>
+<script src="javascripts/scriptaculous/scriptaculous.js?load=effects,dragdrop" type="text/javascript"></script>
+<script src="javascripts/glassbox/glassbox.js" type="text/javascript"></script>
+<script src="javascripts/glassbox/engine.js" type="text/javascript"></script>
+<link rel="shortcut icon" href="images/favicon.ico" />
+<script type="text/javascript">
+</script>
+<link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print"/>
+<style type="text/css" media="screen">
+  @import "stylesheets/loading.css";
+  @import "stylesheets/glassbox.css";
+</style>
+
+<style id="noscript-style" type="text/css" media="all">
+body { 
+  margin-left: 10%; 
+  margin-left: 10%; 
+  margin-right: 10%; 
+  visibility: visible 
+}
+.js { 
+  visibility: hidden 
+}
+#nav {
+  height: 22px;
+  border: 1px solid #AAA;
+  background: #eee;
+}
+#nav li {
+  float: left;
+}
+#nav li a:hover {
+  color: #000;
+}
+</style>
+</head>
+
+<body>
+
+
+<div id="progressBar" style="display: none;" class="glassbox">
+  <div id="progressIndicator"></div>
+  <div id="progressText"> Loading images. Please wait ..</div>
+  <div id="mContainer" style="visibility:hidden"></div>
+</div>
+
+<div id="nav" class="glassbox">
+  <ul>
+    <li><a href="#home" onclick="go2page(1)" style="color:#FFFFFF">Home</a></li>
+    <li><a href="#news" onclick="go2page(2)">News</a></li>
+    <li><a href="#usage" onclick="go2page(3)">Usage</a></li>
+    <li><a href="#examples" onclick="go2page(4)">Examples</a></li>
+    <li><a href="#api" onclick="go2page(5)">API Doc</a></li>
+    <li><a href="#layout" onclick="go2page(6)">Layout</a></li>
+    <li><a href="#license" onclick="go2page(7)">License</a></li>
+    <li><a href="#download" onclick="go2page(8)">Download</a></li>
+    <li><a href="#about" onclick="go2page(9)">About</a><br/><br/></li>
+    <li><a class="js" href="javascript:;" onclick="printVersion()">[Print]</a></li>
+  </ul>
+</div>
+
+<div id="main" class="glassbox">
+  <div id="home" class="glassbox_mc">
+    <br/><br/>
+    <h1>Glass<span>Box</span></h1>
+    <p id="version" style="text-align:left;"></p>
+	<h3>Don't panic! It's not magic.<br/>
+	It's only a simple solution to create another kind of boxes.</h3>
+    <p>GlassBox is a lightweight JavaScript User Interface (UI) library, which use Prototype and Script.aculo.us for some effects. 
+	 GlassBox lets you easily build lucent borders, colorful layouts and "Flash-like" effects.  The GlassBox library ..</p>
+	<ul>
+		<li>is easy to use, customizable and skinnable</li>
+		<li>comes with a coherent API (CSS based parameter) and a short introduction</li>
+		<li>includes a basic Ajax XHR for dynamic content loading</li>
+		<li>is tested with IE 6/7/8, Firefox 3, Opera 9 and Safari 3</li>
+		<li>and is an open source project distributed under MIT license</li>
+    </ul>
+    <p>See <strong><a href="#news">News</a></strong> about the <strong>new Version</strong>!</p>
+    <br/>
+    <p class="js" style="padding:0;padding-left:5px;font-size:small; border-left:3px solid #ccc"><strong>Keyboard navigation</strong>: Keys 1-9 (display page), arrows left/right (previous/next page) and arrows up/down (Scroll content).</p>
+  </div>
+  <div id="news" class="glassbox_mc">
+    <h3>[Version 2.1.0] Some bug fixes for IE. But all bugs? ;)</h3>
+	<p>2010/04/06 - Thanks to Carsten and quite a few people more for reporting.</p>
+	<br/>
+    <h3>[Version 2.0.1]  Bug fix for LightBox (lbo) scroll &amp; overlay bug.</h3>
+	<p>2009/06/28 - Kamil has point me to a bug of the lbo() function: It opens the lightbox allways at the top of the page.</p>
+	<br/>
+    <h3>[Version 2.0.0] It has finally been done! Version 2 is online.</h3>
+	<p>2009/02/23 - I got a lot of feedback for this project during the past year. Thanks to all for reporting bugs and sending suggestions. 
+	All your impact went into a new Version: Version 2.0.0. </p>
+   	<p><strong>.. and what's new or changed?</strong></p>
+	<p>1.Through versions 1.x.x you can't destroy glassbox objects. Since this is important to create/destroy boxes via 
+	link-tag, it's been fixed now. Please see <a href="examples/flashnotice_effects_link.htm" target="_blank">example</a> 
+	for details.</p>
+	<p>2. Previous versions had Ids like 'content' and 'contentBoxBg' for each element. What a shame! Please see 
+	<a href="#layout">Layout</a> for necessary changes in your stylesheets.</p>
+	<p>3. You may now use height:auto. The box resizes to the height of the content (except 'vscreen'). 
+	See <a href="examples/threecolumns_center_skin_greyline.htm" target="_blank">example</a>.</p>
+	<p>4. The IE 7 PNG bug is fixed (not tested in IE8).</p>
+	<p>5. New is a simple helper function 'Dollar' ($ - shortcut for document.getElementById).</p>
+	<br/>
+	<p style="margin-top:15px;padding:0;padding-left:5px;border-left:3px solid #ccc; font-weight:bold;">
+		I've tried to change the code as cautious as possible, but please test your application, 
+		if you migrate from major version 1 to 2.
+	</p>
+	<br />
+	<br />
+  </div>
+  <br/><br/>
+
+  <div id="usage" class="glassbox_mc">
+    <h3>Quick start</h3>
+    <p>1. Unzip the GlassBox.zip. Include the GlassBox script in the head section of your document:</p>
+    <pre><code>&lt;script src="glassbox/glassbox.js" type="text/javascript"&gt;&lt;/script&gt;</code></pre>
+    <p>or use the minified version:</p>
+    <pre><code>&lt;script src="glassbox/glassbox-min.js" type="text/javascript"&gt;&lt;/script&gt;</code></pre>
+    <br/>
+    <p>2. Put the content for your GlassBox into a div in the body section of your document:</p>
+    <pre><code>&lt;div id="myGlassboxContent"&gt;
+  &lt;!-- Content --&gt;
+&lt;/div&gt;</code></pre>
+    <br/>
+    <p>3. Create a new object and define first (init) id, width, height and overflow, and second (apos) position left and 
+    top (see <strong><a href="#api">API Doc</a></strong>):</p>
+     <pre><code>&lt;script type="text/javascript"&gt;
+var myGlassBox = new GlassBox();
+myGlassBox.init( 'myGlassboxContent', '400px', '300px', 'auto' );
+myGlassBox.apos( '290px', '35px' );
+&lt;/script&gt;</code></pre>
+    <br/><br/>
+    <h3>Ajax GETrequest</h3>
+	  <br/>
+		<p>GETrequest is an <strong>external function</strong> and <strong>not bound</strong> to a GlassBox object. 
+		Which means: you may use it without any GlassBox objects.</p>
+		<p>The function was added especially for simple loading external content into Glassbox objects 
+		without other libraries. Method of the XMLHttpRequest is GET.</p>
+		<p><strong>GETrequest</strong> ( url, [target_id, [callback_parameter]] )</p>
+		<table cellpadding="0" cellspacing="0">
+		<tr>
+			<th colspan="4">Parameter:</th>
+		</tr>
+		<tr>
+			<td><strong>url</strong></td>
+			<td>required</td>
+			<td>string</td>
+			<td>Request Url</td>
+		</tr>
+		<tr>
+			<td><strong>target_id</strong></td>
+			<td>optional</td>
+			<td>string</td>
+			<td>Id of the Element in which the returned data should be loaded</td>
+		</tr>
+		<tr>
+			<td><strong>callback_parameter</strong></td>
+			<td>optional</td>
+			<td>any kind of datatype</td>
+			<td>Parameter for the user defined '<strong>GETrequest_callbackHandler</strong>'</td>
+		</tr>
+		</table>
+    <h3>Example:</h3>
+    <p><strong>XML Source</strong></p>
+    <pre><code>&lt;?xml version='1.0'?&gt;
+&lt;quotes&gt;
+   &lt;quote&gt;The bad news is time flies. 
+      The good news is you're the pilot. (Michael Althsuler)
+   &lt;/quote&gt;
+   &lt;quote&gt;Time flies like an arrow. 
+      Fruit flies like a banana. (Groucho Marx)
+   &lt;/quote&gt;
+&lt;/quotes&gt;</code></pre>
+	<br/>
+    <p><strong>XHTML</strong></p>
+    <pre><code>&lt;div id="quotes"&gt;&lt;/div&gt;
+	
+&lt;script&gt;
+  var GETrequest_callbackHandler = function(msg) {
+  	alert(msg);
+  }
+  GETrequest('getQuotes.php?match=Groucho', 'quotes', 'Hello');
+&lt;/script&gt;
+</code></pre>
+	<br/>
+    <p><strong>getQuotes.php (PHP5)</strong></p>
+    <pre><code>$xmlfile = "quotes.xml";
+$match = $_GET['match'];
+if (file_exists( $xmlfile )) {
+  try {
+    $quotes = simplexml_load_file( $xmlfile );
+    foreach ($quotes->quote as $quote) {
+      if(
+        ($match != "" &amp;&amp; preg_match("/" . $match . "/i", $quote)) 
+          || $match == ""
+      ) echo $quote, '&lt;br/&gt;&lt;br/&gt;';
+    }
+  } 
+  catch (Exception $e) { /* error */ }
+}</code></pre>
+	<br/>
+    <p><strong>Output (live):</strong></p>
+    <div id="quotes" style="border:1px solid #666;padding:10px;padding-bottom:0px;"></div>
+    <script type="text/javascript">GETrequest('services/getQuotes.php?match=Groucho', 'quotes');</script>
+	<br />
+	<p>Find an example/demo with callback handler [<a href="examples/flashnotice_effects_autostart_ajax.htm" target="_blank">here</a>].
+		The callback handler in this example sets element styles after successful request/response.</p>
+	<br />
+	<br />
+    <h3>Background images and file size</h3>
+    <br/>
+	<p>An adequate background is essential for the visual effect of a GlassBox object. This <strong>demo</strong> website uses eight big JPEG images (1600x1200 pixel) - for each 'page' one. This results in long loading time for the user, high traffic and costs per user 
+for the owner of the website and - last but not least - needless burden for the Nature (carbon dioxide (CO<sub>2</sub>) emissions and resource consumption). Bad!</p>
+	<p>To avoid this, simply use GlassBox as a 'Lightbox' or 'Flashnotice' tool (typically no need to use special background images). The size of the 'light' package (compressed script and default skin images) results in a weight under 25 kb. But if you plan to work with fullscreen images - use all possibilities to reduce the data volume: Reduce the number of colors in GIF images, reduce the JPG quality down to 40%, try different blur filter, ..</p>
+	<p>Be <strong>creative</strong>!</p>
+    <br/><br/>
+  </div>
+  <br/><br/>
+
+  <div id="examples" class="glassbox_mc">
+    <h3>Examples</h3>
+    <br/>
+	<p>1. <a href="examples/minimal.htm" target="_blank">Basic example</a></p>
+	<p>2. Flashnotice examples:</p>
+    <ul> 
+    	<li><a href="examples/flashnotice.htm" target="_blank">Flashnotice</a></li>
+    	<li><a href="examples/flashnotice_skin_greyline.htm" target="_blank">Flashnotice (skin greyline)</a></li>
+    	<li><a href="examples/flashnotice_skin_facebookstyle.htm" target="_blank">Flashnotice (skin facebookstyle)</a></li>
+    	<li><a href="examples/flashnotice_effects_autostart.htm" target="_blank">Flashnotice with effects (autostart)</a></li>
+    	<li><a href="examples/flashnotice_effects_autostart_ajax.htm" target="_blank">Flashnotice with effects and ajax (autostart)</a></li>
+    	<li><a href="examples/flashnotice_effects_link.htm" target="_blank">Flashnotice with effects (Start onclick)</a></li>
+    </ul>
+	<p>3. Lightbox examples:</p>
+    <ul>
+    	<li><a href="examples/lightbox.htm" target="_blank">Lightbox</a></li>
+    	<li><a href="examples/lightbox_effects.htm" target="_blank">Lightbox with effects</a></li>
+    </ul>
+	<p>4. Website examples:</p>
+    <ul>
+    	<li><a href="examples/threecolumns_center.htm" target="_blank">Three columns (skin default)</a></li>
+    	<li><a href="examples/threecolumns_center_skin_greyline.htm" target="_blank">Three columns / Single Source Publishing (skin greyline)</a></li>
+    	<li>Single Source Publishing (See source code of this application). <br/>
+    	New: history manager for using back button.</li>
+     </ul>
+  </div>
+  <br/><br/>
+
+  <div id="api" class="glassbox_mc">
+    <h3>API Documentation</h3>
+	<br/>
+    <h4>Create and initialize a glassbox object</h4>
+	<div class="item">
+		<p><strong>init</strong> (id, width, height, overflow [, borderskin [, resize [, dblclick ]]])</p> 
+		<table cellpadding="0" cellspacing="0">
+		<tr>
+			<th colspan="4">Parameter:</th>
+		</tr>
+		<tr>
+			<td><strong>id</strong></td>
+			<td>required</td>
+			<td>string</td>
+			<td>Element Id</td>
+		</tr>
+		<tr>
+			<td><strong>width</strong></td>
+			<td>required</td>
+			<td>string</td>
+			<td>GlassBox width (CSS values: px, em, ..)</td>
+		</tr>
+		<tr>
+			<td><strong>height</strong></td>
+			<td>required</td>
+			<td>string</td>
+			<td>GlassBox height (CSS values: px, em, ..)</td>
+		</tr>
+		<tr>
+			<td><strong>overflow</strong></td>
+			<td>required</td>
+			<td>string</td>
+			<td>Scrollbars box content (CSS values: auto, hidden, ..)</td>
+		</tr>
+		<tr>
+			<td><strong>borderskin</strong></td>
+			<td>optional</td>
+			<td>string</td>
+			<td>Border image set (default, white, noborder)</td>
+		</tr>
+		<tr>
+			<td><strong>resize</strong></td>
+			<td>optional</td>
+			<td>bool</td>
+			<td>Center GlassBox on resize event (Default: false)</td>
+		</tr>
+		<tr>
+			<td><strong>dblclick</strong></td>
+			<td>optional</td>
+			<td>bool</td>
+			<td>Fade/hide GlassBox on double click event (Default: false)</td>
+		</tr>
+		</table>
+		<br/>
+		<p>Example:</p>
+		<pre><code>var myGlassBox = new GlassBox();
+myGlassBox.init( 'myGlassBox', 
+   '450px', '360px', 'hidden', 'white', true, false
+);</code></pre>
+	</div>
+
+    <h4>Four different ways to display a glassbox object</h4>
+	<div class="item">
+		<p><strong>1. Display object inline</strong></p>
+		<p><strong>ipos</strong> ()</p>
+		<p>Example:</p>
+   		<pre><code>myGlassBox.ipos();</code></pre>
+	</div>
+	<div class="item">
+		<p><strong>2. Display object with an absolute position</strong></p>
+		<p><strong>apos</strong> ( left, top )</p>
+		<table cellpadding="0" cellspacing="0">
+		<tr>
+			<th colspan="4">Parameter:</th>
+		</tr>
+		<tr>
+			<td><strong>left</strong></td>
+			<td>required</td>
+			<td>string</td>
+			<td>Absolute position left (CSS values: px, em, ..)</td>
+		</tr>
+		<tr>
+			<td><strong>top</strong></td>
+			<td>required</td>
+			<td>string</td>
+			<td>Absolute position top (CSS values: px, em, ..)</td>
+		</tr>
+		</table>
+		<p>Example:</p>
+		<pre><code>myGlassBox.apos( '690px', '35px' );</code></pre>
+	</div>
+	<div class="item">
+		<p><strong>3. Display object in full vertical position</strong></p>
+		<p><strong>vscreen</strong> ( left, margin )</p>
+		<table cellpadding="0" cellspacing="0">
+		<tr>
+			<th colspan="4">Parameter:</th>
+		</tr>
+		<tr>
+			<td><strong>left</strong></td>
+			<td>required</td>
+			<td>string</td>
+			<td>Absolute position left (CSS values: px, em, ..)</td>
+		</tr>
+		<tr>
+			<td><strong>margin</strong></td>
+			<td>required</td>
+			<td>string</td>
+			<td>Glassbox margin (CSS values: px, em, ..)</td>
+		</tr>
+		</table>
+		<p>Example:</p>
+		<pre><code>myGlassBox.vscreen( '50px', '5px' );</code></pre>
+	</div>
+	<div class="item">
+		<p><strong>4. Display object as a lightbox with overlay</strong></p>
+		<p><strong>lbo</strong> ( [exitbutton, [opacity_overlay]] )</p>
+		<table cellpadding="0" cellspacing="0">
+		<tr>
+			<th colspan="4">Parameter:</th>
+		</tr>
+		<tr>
+			<td><strong>exitbutton</strong></td>
+			<td>optional</td>
+			<td>bool</td>
+			<td>Lightbox exit button (true, false) Default: false</td>
+		</tr>
+		<tr>
+			<td><strong>opacity_overlay</strong></td>
+			<td>optional</td>
+			<td>float</td>
+			<td>Lightbox overlay opacity</td>
+		</tr>
+		</table>
+		<p>Example:</p>
+		<pre><code>myGlassBox.lbo( true, 0.50 ); </code></pre>
+	</div>
+    
+	
+	<h4>Visual Effects</h4>
+	<div class="item">
+		<p><strong>script.aculo.us appear effect</strong></p>
+		<p><strong>appear</strong> ( duration )</p>
+		<table cellpadding="0" cellspacing="0">
+		<tr>
+			<th colspan="4">Parameter:</th>
+		</tr>
+		<tr>
+			<td><strong>duration</strong></td>
+			<td>optional</td>
+			<td>integer</td>
+			<td>Shows a GlassBox only for a period of time (Milliseconds)</td>
+		</tr>
+		</table>
+		<p>Note: appear (without duration) is called by default - if script.aculo.us is included.</p>
+		<p>Example:</p>
+		<pre><code>myGlassBox.appear(3000);</code></pre>
+	</div>
+	<div class="item">
+		<p><strong>script.aculo.us draggable effect</strong></p>
+		<p><strong>draggable</strong> ()</p>
+		<table cellpadding="0" cellspacing="0">
+		<tr>
+			<th colspan="4">Parameter:</th>
+		</tr>
+		<tr>
+			<td><strong>text</strong></td>
+			<td>required</td>
+			<td>string</td>
+			<td>Text for the title attibute</td>
+		</tr>
+		</table>
+		<p>Example:</p>
+		<pre><code>myGlassBox.draggable('You can drag me!');</code></pre>
+		<pre><code>myGlassBox.draggable('');</code></pre>
+	</div>
+    
+	
+	<h4>Miscellaneous</h4>
+	<div class="item">
+		<p><strong>z-index of a Glassbox object</strong></p>
+		<p><strong>zindex</strong> (zindex)</p>
+		<table cellpadding="0" cellspacing="0">
+		<tr>
+			<th colspan="4">Parameter:</th>
+		</tr>
+		<tr>
+			<td><strong>zindex</strong></td>
+			<td>required</td>
+			<td>string</td>
+			<td>Sets the GlassBox z-index</td>
+		</tr>
+		</table>
+		<p>Example:</p>
+		<pre><code>myGlassBox.zindex('100');</code></pre>
+	</div>
+    
+	
+	<h4>Helper</h4>
+	<div class="item">
+		<p><strong>Shortcut for document.getElementById(id)</strong></p>
+		<p><strong>$</strong> (id)</p>
+		<table cellpadding="0" cellspacing="0">
+		<tr>
+			<th colspan="4">Parameter:</th>
+		</tr>
+		<tr>
+			<td><strong>id</strong></td>
+			<td>required</td>
+			<td>string</td>
+			<td>Id of the element</td>
+		</tr>
+		</table>
+		<p>Example:</p>
+		<pre><code>$('elementId').focus();</code></pre>
+		<p><strong>Note</strong>: Function checks if another 'Dollar function' (like in prototype.js) was defined.</p>
+	</div>
+	<div class="item">
+		<p><strong>Simple Ajax request</strong></p>
+<p><strong>GETrequest</strong> ( url, [target_id, [callback_parameter]] )</p>
+		<table cellpadding="0" cellspacing="0">
+		<tbody><tr>
+			<th colspan="4">Parameter:</th>
+		</tr>
+
+		<tr>
+			<td><strong>url</strong></td>
+			<td>required</td>
+			<td>string</td>
+			<td>Request Url</td>
+		</tr>
+		<tr>
+
+			<td><strong>target_id</strong></td>
+			<td>optional</td>
+			<td>string</td>
+			<td>Id of the Element in which the returned data should be loaded</td>
+		</tr>
+		<tr>
+			<td><strong>callback_parameter</strong></td>
+
+			<td>optional</td>
+			<td>any kind of datatype</td>
+			<td>Parameter for the user defined '<strong>GETrequest_callbackHandler</strong>'</td>
+		</tr>
+		</tbody></table>
+		<p>Example: See <strong><a href="#usage">Usage</a></strong></p>
+	</div>
+    
+    <br/><br/>
+  </div>
+  <br/><br/>
+  <div id="layout" class="glassbox_mc">
+    <h3>Layout</h3>
+    <p><b>Notice</b>: If you update the glassbox.js in an existing application from version 1.x to 2.x - please change this in your CSS: </p>
+    <ol style="list-style-type: lower-alpha">
+    	<li>'#myObj #contentBoxBg' <b>to</b> '#myObj_contentBoxBg'</li>
+    	<li>'#myObj #content'  <b>to</b> '#myObj_content'</li>
+    </ol>
+	<br/>
+	
+    <h4>1. Box content style</h4>
+    <p>With the following two selectors you can edit the style of your GlassBox object:</p>
+    <p><strong>#myObj_contentBoxBg</strong>: background style (image, color, alpha/opacity, ..)</p>
+    <img src="images/boxmodel_v2_small.png" alt="glassbox boxmodel" style="float: right"/>
+    <pre style="width: 280px"><code>#myObj_contentBoxBg {
+   background-color: #eeeeee;
+   filter: alpha(opacity=80);
+   -moz-opacity:.80;
+   opacity:.80;
+}</code></pre>
+	<br/>
+    <p><strong>#myObj_content</strong>: content style (font, padding, images, ..)</p>
+    <pre style="width: 280px"><code>#myObj_content {
+   text-align: left; 
+   padding: 10px; 
+}</code></pre>
+    <br/><br/>
+    <h4>2. Skins (GlassBox border)</h4>
+    <p>You can use different skins for your application:</p>
+    <ul>
+    	<li>default</li>
+    	<li>noline</li>
+    	<li>white</li>
+    	<li>greyline (NEW)</li>
+    	<li>facebookstyle (NEW)</li>
+    </ul>
+    <p>Usage:</p>
+    <pre><code>myBox.init( 'myBox', '450px', '360px', 'hidden', 'facebookstyle' );</code></pre>
+    <br/><br/>
+    <h4>3. Create your own skin (GlassBox border)</h4>
+    <p>Create a new skin subdirectory in <em>glassbox/skins</em> like "<em>mySkin</em>" with your own eight border images:</p>
+	<ol>
+	  <li>bottom.png (1600 x 21 px)</li>
+	  <li>bottomleft.png (25 x 21 px)</li>
+	  <li>bottomright.png (25 x 21 px)</li>
+	  <li>left.png (25 x 1200 px)</li>
+	  <li>right.png (25 x 1200 px)</li>
+	  <li>top.png (1600 x 21 px)</li>
+	  <li>topleft.png (25 x 21 px)</li>
+	  <li>topright.png (25 x 21 px)</li>
+    </ol>
+	
+	<p>If you use other image dimensions than the given ones, don't forget to insert the width and height of your skin border (eg. "15px" and "20px") in the following variables in glassbox.js:</p>
+	<br/>
+    <pre><code>this.bb_hor = "",
+this.bb_ver = "",
+</code></pre>
+	<br/>
+	<p>Include your new skin:</p>
+	<br/>
+    <pre><code>myBox.init( 'myBox', '450px', '360px', 'hidden', 'mySkin' );</code></pre>
+	<br/><br/><br/>
+  </div>
+  <br/><br/>
+  <div id="license" class="glassbox_mc">
+    <h3>License</h3>
+    <p>GlassBox is licensed (like script.aculo.us) under the terms of the
+    <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">MIT License</a>.</p>
+    <p><strong>This means</strong>: you can use it, free of charge, for anything you like
+    (which includes commercial applications); just don't remove the copyright remarks.</p>
+    <p>If you want to contribute or/and use GlassBox in commercial projects, please 
+    help <strong>Amnesty International</strong> to fight against human rights violations and 
+    <a href="http://www.amnesty.org/en/donate" target="_blank">donate now</a>. Thanks.</p>   
+    <hr/>
+    <p>MIT License:</p>
+    <p>Copyright (c) 2006-2009 Uli Preuss (http://www.glassbox-js.com)</p>
+    <p>Permission is hereby granted, free of charge, to any person obtaining
+    a copy of this software and associated documentation files (the
+    "Software"), to deal in the Software without restriction, including
+    without limitation the rights to use, copy, modify, merge, publish,
+    distribute, sublicense, and/or sell copies of the Software, and to
+    permit persons to whom the Software is furnished to do so, subject to
+    the following conditions:</p>
+    <p>The above copyright notice and this permission notice shall be
+    included in all copies or substantial portions of the Software.</p>
+    <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+    NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+    LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+    OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+    WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+  </div>
+  <br/><br/>
+  <div id="download" class="glassbox_mc">
+    <h3>Download</h3>
+    <p id="version2" style="text-align:left;"></p>
+    <p><a href="downloads/glassbox.latest.zip"><img src="images/download_icon.gif"
+		onmouseover="this.src='images/download_icon_hover.gif'"
+		onmouseout="this.src='images/download_icon.gif'"
+		onclick="addInfo()" alt="" /></a></p>
+    <br/><br/>
+    <p>.. get the latest versions of the required libraries for the visual effects here::</p>
+      <ul>
+        <li><a href="http://prototypejs.org/" target="_blank">Prototype</a> JavaScript framework</li>
+        <li><a href="http://script.aculo.us/" target="_blank">script.aculo.us</a> (collection of Web 2.0 style JavaScript libraries)</li>    
+      </ul>
+      <!--
+	<p>See <a href="downloads/" target="_blank">Version History</a></p>
+	-->
+  </div>
+  <br/><br/>
+  <div id="about" class="glassbox_mc">
+    <h3>About</h3>
+    <p><strong>GlassBox</strong> author Uli Preuss is a frontend developer and elearning designer 
+    living in the North of Germany. Please report all bugs, questions, suggestions or any other feedback to dev [at] glassbox-js [dot] com. GlassBox a non-profit-project - but you can <strong>hire me</strong> for other projects via: me [at] ulipreuss [dot] eu. </p>
+	<p>Libraries, codesnippets and inspiration:</p>
+    <ul>
+	    <li><strong>script.aculo.us JavaScript libraries</strong> (optional - for appear/fade and draggable effects)
+	    (c) 2005 Thomas Fuchs <a href="http://script.aculo.us" 
+	    target="_blank">http://script.aculo.us</a></li>
+	    <li><strong>Prototype JavaScript Framework</strong> (optional - but necessary for the usage of script.aculo.us)
+	    (c) 2005-2007 Sam Stephenson <a href="http://prototypejs.org/" 
+	    target="_blank">http://prototypejs.org</a></li>
+	    <li><strong>Lightbox JS</strong> (inspiration for glassbox.lbo)
+	    <br/>(c) 2005 Lokesh Dhakar <a href="http://www.huddletogether.com/projects/lightbox/" 
+	    target="_blank">http://www.huddletogether.com/projects/lightbox/</a></li>
+	    <li>Codesnippet for '<strong>Reading Style Values</strong>' (c) by Garrett Smith
+	    <a href="http://dhtmlkitchen.com" 
+	    target="_blank">http://dhtmlkitchen.com</a> </li>
+	    <li>Codesnippet for '<strong>IE getComputedStyle Method for Block Elements</strong>' (c) by Matt Murphy
+	    <a href="http://www.matts411.com" target="_blank">http://www.matts411.com</a></li>
+	    <li>Codesnippet for '<strong>historyManager</strong>' (not used in glassbox.js - but used for this page) (c) by Kai Jäger
+	    <a href="http://ajax-in-der-praxis.de/" target="_blank">http://ajax-in-der-praxis.de/</a></li>
+    </ul>
+	<p>Thanks!</p>
+  </div>
+</div>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">_uacct = "UA-1596552-1"; urchinTracker();</script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>GlassBox</title>
+<script type="text/javascript" src="../javascripts/glassbox/glassbox.js"></script>
+<style type="text/css">
+body {
+	background-image: url( ../images/bg.jpg);
+}
+#myBox #myBox_content{
+	padding:2px;
+	font-family: verdana, arial, helvetica;
+	font-size: 12px;
+}
+
+</style>
+<script type="text/javascript">
+window.onload = function(){
+	path_to_root_dir = "../";
+	var myBox = new GlassBox();
+	myBox.init( 'myBox', '128px', '62px', 'hidden' );
+	myBox.apos( '170px', '150px' );
+};
+</script>
+</head>
+
+<body>
+
+<div id="myBox">Hello World!</div>
+<!--
+<a href="javascript:myFunc();">popup</a>
+-->
+</body>
+</html>

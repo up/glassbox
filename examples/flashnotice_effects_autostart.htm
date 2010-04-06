@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>GlassBox: flash notice</title>
+<script src="../javascripts/prototype.js" type="text/javascript"></script>
+<script src="../javascripts/scriptaculous/effects.js" type="text/javascript"></script>
+<script src="../javascripts/glassbox/glassbox.js" type="text/javascript"></script>
+<style type="text/css">
+body { 
+  background: url( ../images/bg114.jpg );
+  font-family:Arial, Helvetica, sans-serif;
+}
+#myBox_contentBoxBg {
+	filter: alpha(opacity=50);
+	-moz-opacity:.50;
+	opacity:.50;
+}
+#myBox_content {
+  padding: 20px; 
+}
+#myBox h3 {
+  font-size: 17px;
+  margin: 0px; 
+  text-align: center
+}
+</style>
+<script type="text/javascript">
+path_to_root_dir = "../";
+function flashnotice() {
+	var myBox = new GlassBox();
+	myBox.init( 'myBox', '500px', '100px', 'hidden', '', true, true );
+	myBox.lbo( false, 0.50 ); 
+	myBox.appear(3000);
+}
+$(document).observe("dom:loaded", function(){
+	flashnotice();
+});
+</script>
+</head>
+
+<body scroll="no">
+
+<div id="myBox" class="glassbox">
+  <h3>Notice: This message disappears in 3 seconds.</h3>
+</div>
+</body>
+</html>

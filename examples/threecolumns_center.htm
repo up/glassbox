@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>GlassBox</title>
+<script src="../javascripts/glassbox/glassbox.js" type="text/javascript"></script>
+<style type="text/css">
+body {
+	background-image: url( ../images/bg114.jpg);
+	background-attachment: fixed;
+	font-family: verdana, arial, helvetica;
+	font-size: 12px;
+	text-align: center;
+}
+#wrapper {
+    margin: 0 auto;
+    text-align:left;
+    width: 952px;
+}#rightBox,
+.column {
+	float:left;
+	margin-left: -5px;
+}#topBox {
+	margin-left: -5px;
+}
+#topBox_contentBoxBg {
+	background-image: url( ../images/bg114.jpg);
+	background-position: -100px -600px;
+	filter: alpha(opacity=80);
+	-moz-opacity:.80;
+	opacity:.80;
+}
+#topBox_content {
+	padding: 1px 18px;
+}
+#topBox_content h1 {
+	*margin-top: 6px;
+	color: #FFF;
+}
+#leftBox_content,
+#leftBox2_content,
+#mainBox_content,
+#rightBox_content {
+	padding: 8px;
+	
+}
+</style>
+<script type="text/javascript">
+path_to_root_dir = "../";
+
+window.onload = function(){
+	
+	var topBox = new GlassBox();
+	topBox.init( 'topBox', '940px', '110px', 'hidden' );
+	topBox.ipos();
+	
+	var leftBox = new GlassBox();
+	leftBox.init( 'leftBox', '200px', '', 'hidden' );
+	leftBox.ipos();
+	
+	var leftBox2 = new GlassBox();
+	leftBox2.init( 'leftBox2', '200px', '', 'hidden' );
+	leftBox2.ipos();
+	
+	var mainBox = new GlassBox();
+	mainBox.init( 'mainBox', '550px', '', 'hidden' );
+	mainBox.ipos();
+	
+	var rightBox = new GlassBox();
+	rightBox.init( 'rightBox', '200px', '', 'hidden' );
+	rightBox.ipos();
+	
+};
+</script>
+</head>
+
+<body>
+<div id="wrapper">
+		<div id="topBox">
+			<h1>top box content</h1>
+		</div>
+	<div class="column">
+		<div id="leftBox">
+			<p>left box content</p>
+			<p>left box content</p>
+			<p>left box content</p>
+			<p>left box content</p>
+			<p>left box content</p>
+		</div>
+		<div id="leftBox2">
+			<p>left box 2 content</p>
+			<p>left box 2 content</p>
+			<p>left box 2 content</p>
+			<p>left box 2 content</p>
+			<p>left box 2 content</p>
+		</div>
+	</div>
+	<div id="mainBox" class="column">
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+		<p>main box content</p>
+	</div>
+	<div id="rightBox" class="column">
+		<p>right box content</p>
+		<p>right box content</p>
+		<p>right box content</p>
+		<p>right box content</p>
+		<p>right box content</p>
+		<p>right box content</p>
+		<p>right box content</p>
+		<p>right box content</p>
+		<p>right box content</p>
+		<p>right box content</p>
+		<p>right box content</p>
+	</div>
+</div>
+</body>
+</html>

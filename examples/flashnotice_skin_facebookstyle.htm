@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>GlassBox: flash notice</title>
+<script src="../javascripts/glassbox/glassbox.js" type="text/javascript"></script>
+<style type="text/css">
+body { 
+  background: url( ../images/bg22.jpg );
+  font-family:Arial, Helvetica, sans-serif;
+}
+#myBox_content {
+  padding: 13px; 
+}
+#myBox h3 {
+  font-size: 17px;
+  margin: 0px; 
+  text-align: center
+}
+</style>
+<script type="text/javascript">
+path_to_root_dir = "../";
+function flashnotice() {
+	var myBox = new GlassBox();
+	myBox.init( 'myBox', '460px', '100px', 'hidden', 'facebookstyle', true, true );
+	myBox.lbo( false, 0.01 ); 
+	myBox.appear(5000);
+}
+</script>
+</head>
+
+<body scroll="no" onload="flashnotice()">
+
+<div id="myBox" class="glassbox">
+  <h3>Notice: This message disappears in 5 seconds.</h3>
+</div>
+</body>
+</html>

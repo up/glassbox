@@ -1,0 +1,98 @@
+/*Print-Stylesheets */
+
+body { 
+	/* Gesamte Papierflche ausnutzen */
+	margin: 0;
+	padding: 0;
+	font: 12pt Garamond, Palatino, "Times New Roman", Times, serif;
+	/* Zusammen mit Farbangaben sollte man immer Hintergrundfarben angeben, in diesem Fall "transparent" */
+	color: black;
+	background: transparent;
+	visibility: visible;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Lucida Grande", "Lucida Sans", "Lucida Sans Unicode", "Lucida", Verdana, "Bitstream Vera Sans", sans-serif;
+	font-weight: bold;
+ 	margin: .75em 0 .5em 0;
+	page-break-after: avoid; /* verhindert einen Seitenumbruch nach berschriften bei einigen Browsern. */
+}
+
+
+/* Blocksatz bei Abstzen */
+p {
+	text-align:justify;
+} 
+/* Erste Zeile von angrenzenden Abstzen einzurcken. 
+Zuerst wird allen Abstzen eine Leerzeile Abstand nach unten gegeben. */
+p {
+	margin: 0 0 1em 0;
+}
+/* Dann wird das mit der zweiten Regel aufgehoben und die zweite Zeile eingerckt. 
+   Das ist notwendig, da IE den Selektor p+p nicht versteht und nur Abstze auswhlt, 
+   denen bereits ein Absatz vorhergegangen ist. Dieser Selektor wird hier verwendet, 
+   da der erste Absatz eines Abschnittes keine Einrckung erhalten soll. Im Internet 
+   Explorer bleibt so weiterhin ein Abstand zwischen Abstzen, alle anderen Browser 
+   knnen von den Einrckungen profitieren.*/
+p+p {
+	margin-top: -1em;
+	text-indent: 2em;
+}
+
+
+
+/* Fuer die Druckausgabe ueberfluessiges abschalten */
+.screen {
+	display: none
+}
+#nav  {
+	display: none;
+} 
+#progressBar {
+	display: none;
+} 
+
+
+
+/* Beim Ausdruck kann man auf Hyperlinks verzichten, ebenso wie auf hover-Effekte 
+   oder die Unterscheidung zwischen besuchten und unbesuchten Links. Trotzdem wnschen 
+   aber viele Leute eine eindeutige Erkennung von verlinkten Wrtern, daher wird eine 
+   (dunkel)blaue Linkfarbe beibehalten. */
+a, a:visited, a:hover, a:visited:hover {
+	color: #04667e;
+	background: transparent;
+	text-decoration: none;
+}
+/* Code fgt hinter Links den URL auf den sie zeigen ein. Diesen sog. 'generierten Inhalt' 
+   verstehen allerdings nicht alle Browser (IE). */
+a:link:after, a:link:visited:after {
+  content: " (Link to <" attr(href) ">) ";
+  font-size: 76%;
+  color: #999;
+  background: transparent;
+}
+/* Internen Links wird mit der zweiten Regel die Domain der eigenen Site vorangestellt. */
+a[href^="/"]:link:after {
+	content: " (Link to <http://glassbox-js.com " attr(href) ">) ";
+}
+
+
+
+/* Allen Elementen werden die korrekten Anfhrungszeichen 
+   zugewiesen. Diese werden in Unicode definiert.*/
+* {
+	quotes: "\201E" "\201C" "\201A" "\2018";
+} 	
+/* Anschlieend wird allen Tags q und blockquote die ffnende Variante 
+   vorangestellt...*/
+q:before, blockquote:before {
+	content:open-quote;
+} 	
+/* ...und die schlieende angefgt. */
+q:after, blockquote:after {
+	content:close-quote;
+} 
+
+
+
+
+

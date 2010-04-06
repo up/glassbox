@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>GlassBox: lightbox-gone-lucent</title>
+<script src="../javascripts/glassbox/glassbox.js" type="text/javascript"></script>
+<style type="text/css">
+body { 
+  background: url( ../images/bg114.jpg );
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+p a {
+  color: #009;
+  font-weight: bold;
+  text-decoration: none;
+}
+p a:hover {
+  background: #ddd;
+}
+#link {
+  visibility: hidden;
+}
+#link a {
+  color: #EEE;
+  text-decoration: none;
+  border: 3px solid #EEE;
+  padding: 0 4px;
+  font-size: smaller;
+}
+#link a:hover {
+  color: #666;
+  background: #EEE;
+  border: 3px solid #666;
+}
+#myBox_contentBoxBg {
+	/*
+	background-position: -100px -200px;
+	background: url( ../images/bg_88.jpg );		
+	*/
+	filter: alpha(opacity=50);
+	-moz-opacity:.50;
+	opacity:.50;
+}
+#myBox_content {
+  padding: 20px; 
+}
+#myBox h3 {
+  margin-top: 10px; 
+}
+</style>
+<script type="text/javascript">
+path_to_root_dir = "../";
+var myBox = new GlassBox();
+var showMyBox = function() {
+	// init object
+	// obj.ini(id, width, height, overflow [, borderskin [, resize [, dblclick ]]]);
+	myBox.init( 'myBox', '450px', '360px', 'hidden', '', true, true );
+	// lbo : lightbox with overlay
+	// obj.lbo[ exitbutton [, opacity ]]);
+	myBox.lbo( true, 0.50 ); 
+}
+</script>
+</head>
+
+<body onload="showMyBox();">
+
+<p id="link"><a href="javascript:showMyBox()">show</a></p>
+<div id="myBox" class="glassbox">
+  <h3>lightbox-gone-lucent</h3>
+  <p>
+    Lightbox is the concept name of a modal window with DHTML. The first 
+    <a href="http://www.huddletogether.com/projects/lightbox/">lightbox</a> 
+	script has been developed by Lokesh Dhakar. 
+  </p>
+  <p>Other implementations are:
+    <a href="http://www.huddletogether.com/projects/lightbox2/">Lightbox 2</a>,
+    <a href="http://codylindley.com/Javascript/257/thickbox-one-box-to-rule-them-all">Thickbox</a>,
+    <a href="http://jquery.com/demo/grey/">Greybox Redux</a>,
+    <a href="http://particletree.com/features/lightbox-gone-wild/">Lightbox-gone-wild</a>,
+    <a href="http://www.gregphoto.net/lightbox/">Multifaceted Lightbox</a>,
+    <a href="http://www.eight.nl/files/leightbox/">Leightbox</a>,
+    <a href="http://www.mondaybynoon.com/2006/03/27/suckerfish-hoverlightbox/">Hover Lightbox</a>,
+    <a href="http://www.doknowevil.net/litebox/">Litebox</a>,
+    <a href="http://www.ryanjlowe.com/?p=9">LITBox</a>,
+    <a href="http://www.ibegin.com/blog/p_ibox.html">iBox</a>,
+    <a href="http://www.digitalia.be/software/slimbox">Slimbox</a> and
+    <a href="http://nicora.net/projects/photoViewer/">Lightbox PhotoViewer</a>. 
+  </p>
+  <p>
+    .. and this is another one.
+  </p>
+</div>
+</body>
+</html>

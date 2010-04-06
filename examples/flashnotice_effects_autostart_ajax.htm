@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>GlassBox: flash notice</title>
+<script src="../javascripts/prototype.js" type="text/javascript"></script>
+<script src="../javascripts/scriptaculous/effects.js" type="text/javascript"></script>
+<script src="../javascripts/glassbox/glassbox.js" type="text/javascript"></script>
+<style type="text/css">
+body { 
+  background: url( ../images/bg114.jpg );
+  font-family:Arial, Helvetica, sans-serif;
+}
+#myBox #contentBoxBg {
+	filter: alpha(opacity=50);
+	-moz-opacity:.50;
+	opacity:.50;
+}
+#myBox #quotes {
+  font-size: 14px;
+  margin: 16px; 
+  padding: 0px; 
+}
+</style>
+<script type="text/javascript">
+path_to_root_dir = "../";
+function flashnotice() {
+	var myBox = new GlassBox();
+	myBox.init( 'myBox', '600px', '90px', 'hidden', '', true, true );
+	myBox.lbo( false, 0.50 ); 
+	myBox.appear(5000);
+}
+function GETrequest_callbackHandler( param ){
+	var elem = 	document.getElementById("myBox");
+	elem.style.fontWeight = param[0];
+	elem.style.color = param[1];
+}
+$(document).observe("dom:loaded", function(){
+	GETrequest('services/getQuotes.php?match=Groucho', 'quotes', ['bold', '#671218']);
+	flashnotice();
+});
+</script>
+</head>
+
+<body scroll="no">
+
+<div id="myBox" class="glassbox">
+  <div id="quotes">loading ..</div>
+</div>
+</body>
+</html>
